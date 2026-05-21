@@ -6,6 +6,7 @@ package com.bidding.system.frontend.bidding_frontend.service;
 
 import com.bidding.system.frontend.bidding_frontend.model.AuthResponseDTO;
 import com.bidding.system.frontend.bidding_frontend.model.EditalDTO;
+import com.bidding.system.frontend.bidding_frontend.model.LanceDTO;
 import com.bidding.system.frontend.bidding_frontend.model.UserDTO;
 import com.bidding.system.frontend.bidding_frontend.model.UserRequestDTO;
 import java.util.List;
@@ -42,17 +43,32 @@ public class ApiService {
         
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
-        HttpEntity<Void> entity = new HttpEntity(headers);
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<List<EditalDTO>> response = restTemplate.exchange(
         BASE_URL + "/api/editais",
-                HttpMethod.GET,
-                new ParameterizedTypeReference<List<EditalDTO>>() {}      
+        HttpMethod.GET,
+        entity,
+        new ParameterizedTypeReference<List<EditalDTO>>() {}
         );
         return response.getBody();
-        
-    
+
      }
     
+    //criar edital
+    public void criarEdital(EditalDTO edital, String token) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity<EditalDTO> entity = new HttpEntity<>(edital, headers);
+        restTemplate.postForObject(BASE_URL + "/api/editais", entity, String.class);
+    }
+
+    //registrar lance 
+    public void registrarLance(Long editalId, LanceDTO lance, String token) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity<LanceDTO> entity = new HttpEntity<>(lance, headers);
+        restTemplate.postForObject(BASE_URL + "/api/editais/" + editalId + "/lances", entity, String.class);
+    }
 }
      

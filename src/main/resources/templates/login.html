@@ -3,25 +3,33 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
     <head>
-        <title>TODO supply a title</title>
+        <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        
-    <div>
-        <label>E-mail:</label>
-        <input type="email" th:field="*{email}" required />
-    </div>
+<h2>Acessar o Sistema</h2>
     
-    <div>
-        <label>Senha:</label>
-        <input type="password" th:field="*{senha}" required />
+    <div th:if="${param.error}" style="color: red;">
+        E-mail ou Senha incorretos.
     </div>
-    
-    <button type="submit">Entrar</button>
+    <div th:if="${param.success}" style="color: green;">
+        Cadastro realizado com sucesso! Faça seu login.
+    </div>
 
+    <form th:action="@{/login}" th:object="${userRequest}" method="POST">
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required /><br/><br/>
+
+        <label>Senha:</label>
+        <input type="password" th:field="*{senha}" required /><br/><br/>
+
+        <button type="submit">Entrar</button>
+    </form>
+    <br/>
+    <a th:href="@{/register}">Não tem conta? Cadastre-se aqui</a>
     </body>
 </html>
