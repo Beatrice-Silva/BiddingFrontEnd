@@ -8,6 +8,7 @@ import com.bidding.system.frontend.bidding_frontend.model.AuthResponseDTO;
 import com.bidding.system.frontend.bidding_frontend.model.UserDTO;
 import com.bidding.system.frontend.bidding_frontend.model.UserRequestDTO;
 import com.bidding.system.frontend.bidding_frontend.service.ApiService;
+import com.bidding.system.frontend.bidding_frontend.service.AuthRestClientService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,61 +17,68 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-
 /**
  *
  * @author BEATRICE
- */
+
+*/
 @Controller
 public class AuthController {
     
     @Autowired
-    private ApiService apiService;
+    private AuthRestClientService restService;
+    
+    @GetMapping("/")
+    public String home(
+            HttpSession session
+    ){
+        return "index";   
+    }
     
     @GetMapping("/login")
-    public String loginPage(Model model){
-        model.addAttribute("userRequest", new UserRequestDTO());
+    public String login(Model model){
+        UserRequestDTO credentials = new UserRequestDTO();
+        model.addAttribute("credenciais",credentials);
         return "login";
     }
     
-    @PostMapping("/login")
-    public String logar(@ModelAttribute UserRequestDTO dto, HttpSession session) {
-        try {
-            // Agora recebemos o DTO completo com token e role
-            AuthResponseDTO authResponse = apiService.logar(dto);
+    @PostMapping("/logar")
+    public String logar(@ModelAttribute UserRequestDTO credentials, HttpSession session) {
+            String token = restService.logar(credentials);
+
+            System.out.println("token"+ token);
+            session.setAttribute("token", token);
             
-            // Salvamos ambos na HttpSession para uso posterior
-            session.setAttribute("token", authResponse.getToken());
-            session.setAttribute("role", authResponse.getRole());
+            return "redirect:/";
             
-            return "redirect:/editais";
-        } catch (Exception e) {
-            return "redirect:/login?error=true";
         }
+   
+
+    @GetMapping("/registrar")
+    public String registrar(Model model) {
+
+        UserDTO newUser = new UserDTO();
+        model.addAttribute("user", newUser);
+        return "registrar";
     }
 
-    @GetMapping("/register")
-    public String registerPage(Model model) {
-        model.addAttribute("user", new UserDTO());
-        return "register";
+
+
+    @PostMapping("/registrar")
+    public String mandaRregistro(@ModelAttribute UserDTO user){
+            restService.registrar(user);
+            return "redirect:/login";
+   
     }
 
-    @PostMapping("/register")
-    public String registrar(@ModelAttribute UserDTO user) {
-        try {
-            apiService.registrarUser(user);
-            return "redirect:/login?success=true";
-        } catch (Exception e) {
-            return "redirect:/register?error=true";
-        }
-    }
-
+    /*
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate(); // Limpa a sessão do usuário completamente
+        session.invalidate();
         return "redirect:/login";
     }
+    */
+
 }
     
 

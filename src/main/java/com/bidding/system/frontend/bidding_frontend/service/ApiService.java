@@ -26,7 +26,7 @@ public class ApiService {
 
     private final RestTemplate restTemplate = new RestTemplate();
     
-    private final String BASE_URL = "http://localhost:9000";
+    private final String BASE_URL = "http://localhost:8000";
 
     //logar (token e role)
     public AuthResponseDTO logar(UserRequestDTO credentials){
