@@ -1,48 +1,39 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Registrar</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <!-- 
-        @navegacao
-        $variaveis 
-        *dados
-        comment -->
-     
-        
-        <h2>Registrar</h2>
-        <form 
-            th:action="@{/registrar}" 
-            th:object="${user}"
-            method="post"
-            >
-            
-            <label>Nome:</label>
-            <input type="text" th:field="*{nome}" placeholder="nome completo" />
-            <br/><br/>
-                
-            
-            <label>Email:</label>
-            <input type="email" th:field="*{email}" placeholder="user@email.com" />
-            <br/><br/>
-            
-            <label>Senha:</label>
-            <input type="password" th:field="*{senha}"/>
-            <br/><br/>
-            
-            <button type="submit">Cadastrar</button>
-    
-    </form>
-        
-        
-    
-    </body>
-</html>
+<head>
+    <title>Registrar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
 
+    <div class="container-center">
+        <span class="page-title">Cadastro</span>
+        <h1>Criar Conta</h1>
+        
+        <form th:action="@{/registrar}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label>Nome:</label>
+                <input type="text" th:field="*{nome}" required />
+            </div>
+            
+            <div class="form-group">
+                <label>E-mail:</label>
+                <input type="email" th:field="*{email}" required />
+            </div>
+            
+            <div class="form-group">
+                <label>Senha:</label>
+                <input type="password" th:field="*{senha}" required />
+            </div>
+            
+            <div class="button-group">
+                <a href="/" class="btn btn-outline">Voltar</a>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
