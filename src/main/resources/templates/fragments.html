@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Titulo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!--
+        
+        card 
+        <div class="card">
+        <div class="card-body">
+        This is some text within a card body.
+        </div>
+        </div>
+        
+        componente pai: 
+        height: 100 vh;
+        
+        display-flex: 
+        
+        
+        
+        justify content center
+        
+        -->
+        <style>
+            
+            
+        </style>
+        
+        <<header th:fragment="topo">
+            <h1 th:text="${titulo}"></h1>
+        </header>
+        
+        <!-- Rota: framnets/layout; NomeTrazerComponente:Nome  -->
+        
+        <div th:replace="~{fragments/ :: nome}">
+        </div>
+        
+        <main>
+            <h1>Página Principal</h1>
+        </main>
+        <!-- -->
+        
+    </body>
+</html>
