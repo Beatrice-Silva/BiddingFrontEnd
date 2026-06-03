@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Lance</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <h1>Form do Lance</h1>
+        <h4>Titulo</h4>
+        <h4>Campo1</h4>
+        <h4>Campo2</h4>
+        
+         <form
+            class="d-grid gap-3" th:action="@{/logar}" th:object="${credentials}" method="post">
+           
+            <div class="grupo">
+                <label>Valor</label>
+                <input type="number" th:field="number" required />
+            </div>
+            
+            <div class="grupo">
+                <label>Data do lance:</label>
+                <input type="Date" th:field="{date}" required />
+            </div>
+               <div class="grupo">
+                <label>Identificação do Edital:</label>
+                <input type="Date" th:field="{date}" required />
+            
+               </div>
+               <div class="grupo">
+                <label>Identificação do Usuário:</label>
+                <input type="Date" th:field="{date}" required />
+            </div>
+             
+             
+            
+            <button type="submit" class="botaoenviar">Executar Lance</button>
+        
+            
+         
+         </form>
+        
+    </body>
+</html>

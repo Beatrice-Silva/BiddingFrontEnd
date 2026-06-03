@@ -13,17 +13,28 @@ public class UserDTO {
     private String nome;
     private String email;
     private String senha;
+    private String confirmarsenha;
     private String role;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String nome, String email, String senha, String role) {
+    
+    public UserDTO(String confirmarsenha, Long id, String nome, String email, String senha, String role) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.role = role;
+        this.confirmarsenha = confirmarsenha;
+    }
+
+    public String getConfirmarsenha() {
+        return confirmarsenha;
+    }
+
+    public void setConfirmarsenha(String confirmarsenha) {
+        this.confirmarsenha = confirmarsenha;
     }
 
     public Long getId() {
