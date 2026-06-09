@@ -8,18 +8,23 @@
 </head>
 <body>
 
-  <div th:replace="~{fragments/index :: pagstyle}">
+  
         </div>
+        <div th:replace="~{templates/layout :: customheader}"></div>
     
-
-
-    <div class="card">
-        <h1 class="titulo">Bem-vindo ao Portal de Editais</h1>
+        
         
         <div class="grupobotoes">
             <a href="/login" class="botaoprincipal">Logar</a>
             <a href="/registrar" class="botaoborda">Registrar</a>
+
         </div>
+    
+       <div class="card"> 
+           
+           
+        <h3 class="titulo">Bem-vindo ao Portal de Editais</h3>
+        
     </div>
 
 </body>

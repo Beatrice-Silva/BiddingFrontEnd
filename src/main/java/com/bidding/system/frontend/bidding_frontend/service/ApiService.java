@@ -29,8 +29,8 @@ public class ApiService {
     private final String BASE_URL = "http://localhost:8000";
 
     //logar (token e role)
-    public AuthResponseDTO logar(UserRequestDTO credentials){
-        return restTemplate.postForObject(BASE_URL + "/api/auth/logar", credentials, AuthResponseDTO.class);
+    public AuthResponseDTO logar(UserRequestDTO credenciais){
+        return restTemplate.postForObject(BASE_URL + "/api/auth/logar", credenciais, AuthResponseDTO.class);
     }
     
     //registrar user

@@ -3,21 +3,23 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Lance</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+
+<div th:replace="~{fragments/layout :: customheader}">
+        </div>   
         
         <h1>Form do Lance</h1>
-        <h4>Titulo</h4>
-        <h4>Campo1</h4>
-        <h4>Campo2</h4>
+        <h4>Informações do Lance</h4>
+
         
          <form
-            class="d-grid gap-3" th:action="@{/logar}" th:object="${credentials}" method="post">
+            class="d-grid gap-3" th:action="@{/logar}" th:object="${credentciais}" method="post">
            
             <div class="grupo">
                 <label>Valor</label>

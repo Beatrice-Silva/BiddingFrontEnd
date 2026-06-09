@@ -10,16 +10,16 @@
 
 <body>
  
-        <div th:replace="~{fragments/login :: pagstyle}">
+  <div th:replace="~{fragments/layout :: customheader}">
         </div>
-    
-    <a href="/" class="botaovoltar">← Voltar</a>
+    <!-- Voltar -->
+    <a href="/login" class="botaovoltar">← Voltar</a>
 
     <div class="card">
-        <h1 class="titulo">Acesse sua conta</h1>
-        
+        <h1 class="titulo">Acesse sua conta:</h1>
+       
         <form
-            class="d-grid gap-3" th:action="@{/logar}" th:object="${credentials}" method="post">
+            class="d-grid gap-3" th:action="@{/logar}" th:object="${credenciais}" method="post">
            
             <div class="grupo">
                 <label>E-mail:</label>
@@ -31,7 +31,7 @@
                 <input type="password" th:field="*{senha}" required />
             </div>
             
-            <button type="submit" class="botaoenviar">Logar</button>
+            <button style="width: 100%" type="submit" class="botaoenviar">Logar</button>
         </form>
     </div>
 

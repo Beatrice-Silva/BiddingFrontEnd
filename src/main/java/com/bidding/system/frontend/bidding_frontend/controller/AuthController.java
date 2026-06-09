@@ -45,14 +45,14 @@ public class AuthController {
     
     @GetMapping("/login")
     public String login(Model model){
-        UserRequestDTO credentials = new UserRequestDTO();
-        model.addAttribute("credenciais",credentials);
+        UserRequestDTO credenciais = new UserRequestDTO();
+        model.addAttribute("credenciais",credenciais);
         return "login";
     }
     
     @PostMapping("/logar")
-    public String logar(@ModelAttribute UserRequestDTO credentials, HttpSession session) {
-            String token = restService.logar(credentials);
+    public String logar(@ModelAttribute UserRequestDTO credenciais, HttpSession session) {
+            String token = restService.logar(credenciais);
 
             System.out.println("token"+ token);
             session.setAttribute("token", token);
@@ -98,7 +98,7 @@ public class AuthController {
         }
     }
     
-    @PostMapping("/registrar")
+    @PostMapping("/registraredital")
     public String listarEditais(@ModelAttribute UserDTO user,
             RedirectAttributes redirectAttributes
     ){
@@ -116,7 +116,7 @@ public class AuthController {
             "errosServidor",
                     mensagemErroDoBackend
             ); 
-        return "redirect:/login";
+        return "redirect:/registrar";
         
         }catch(Exception e){
             redirectAttributes.addFlashAttribute("erroServidor", e.getMessage());
