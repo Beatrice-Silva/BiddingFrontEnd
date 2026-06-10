@@ -11,7 +11,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <!-- header fragment -->
+        
                   <header th:fragment="customheader">
+                      
+                      <th if role='FORNECEDOR'></th>
+
+
                       <nav class="d-flex justify-content-center-between p-3 bg-secondary">
                           <ul class="nav">
                               <li class="nav-item">
@@ -24,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                          
                           <a th:href="@{/login}">
                               <button class="btn btn-danger">
-                                  Sair
+                                 Deslogar
                               </button>
                           </a>
                       </nav>

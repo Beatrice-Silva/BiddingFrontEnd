@@ -5,30 +5,157 @@
         <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    
+        </style>
+      <style>
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: #F5F5F5;
+    color: #FFFFFF;           
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+    position: relative;       
+}
+
+
+
+.card {
+    background-color: #ffffff;
+    padding: 40px 32px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    border: 1px solid #6B6B6B; 
+}
+.titulo {
+    font-size: 24px;
+    color: #FFFFFF;            
+    margin-bottom: 32px;
+}
+.grupo {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.grupo label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.grupo input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #C9C9C9;
+    border-radius: 4px;
+    font-size: 15px;
+    outline: none;
+}
+.botaovoltar {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    color: #C9C9C9;            
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+.botaovoltar:hover {
+    color: black; 
+}
+.botaoenviar {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: white;
+    margin-top: 24px;
+}
+.botaoenviar:hover {
+   color: white; 
+    background-color: black; 
+}
+
+
+.grupobotoes {
+    display: flex;
+    gap: 16px;                
+}
+
+.botaoprincipal {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.botaoprincipal:hover {
+    background-color: #DBDBDB;
+}
+
+.botaoborda {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #DBDBDB;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.botaoborda:hover {
+    background-color: #F5F5F5; 
+}
+            </style>
+  
 </head>
 
-<body>
- 
-  <div th:replace="~{fragments/layout :: customheader}">
-        </div>
-    <!-- Voltar -->
-    <a href="/login" class="botaovoltar">← Voltar</a>
+<body>    
+    <!-- Voltar a pagina anterior-->
+    <a href="/index" class="botaovoltar">← Voltar</a>
+     
 
     <div class="card">
         <h1 class="titulo">Acesse sua conta:</h1>
        
         <form
-            class="d-grid gap-3" th:action="@{/logar}" th:object="${credenciais}" method="post">
-           
+            class="" th:action="@{/logar}" th:object="${credenciais}" method="post">
             <div class="grupo">
                 <label>E-mail:</label>
-                <input type="email" th:field="*{email}" required />
+                <input type="email" th:field="*{email}" class="form-control" id="floatingInput" placeholder="name@example.com"/>
             </div>
             
             <div class="grupo">
                 <label>Senha:</label>
-                <input type="password" th:field="*{senha}" required />
+                <input type="password" th:field="*{senha}" class="form-control" id="floatingPassword" placeholder="Password"/>
             </div>
             
             <button style="width: 100%" type="submit" class="botaoenviar">Logar</button>

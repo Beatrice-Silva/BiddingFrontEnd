@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.HttpStatusCodeException;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  *
@@ -22,13 +24,59 @@ public class EditalController {
     public String listar(
             HttpSession session
     ){
-        Object token = session.getAttribute("token");
+        Object token = session.getAttribute("token");        
+        if(token == null){
+            return "redirect:/login";
+        }
+        return "editais";
+    }
+    
+    @GetMapping("{id}/lances")
+    public String listarPorId(
+            HttpSession session
+    ){
         
+        if(id editais =id lance){
+            return "redirect:/lance";
+        }
+        
+        return "redirect:/lances";
+    }
+    
+    @GetMapping("?urgente=true")
+    public String listaurgante(
+            HttpSession session
+            
+    ){
+        
+        Object token = session.getAttribute("token");
         if(token == null){
             return "redirect:/login";
         }
         
-        return "editais";
+        
+        try{
+        restService.();
+                
+        }catch(HttpStatusCodeException ex)
+        
+            String mensagemErroDoBackEnd = new ObjectMapper()
+                    .readTree(
+                    ex.getResponseBodyAsString()
+                    ).get("message").asString();
+            redirectAttributes.addFlashAttribute(
+            "erroServidor",
+                    mensagemErroDoBackEnd
+                    );
+        }catch(Exception e){
+            redirectAttributes.addFlashAttribute("erroServidor", e.getMessage());
+            return "redirect:/editais"
+        }
+        
+        return "lances";
     }
+  
+    
+    
     
 }

@@ -25,7 +25,7 @@ public class AuthRestClientService {
     
     public AuthRestClientService(){
         this.restClient = RestClient.builder()
-                .baseUrl("http://localhost:8080/api")
+                .baseUrl("http://localhost:9000/api")
                 .build();
     }
     

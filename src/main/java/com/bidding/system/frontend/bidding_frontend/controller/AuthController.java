@@ -38,7 +38,7 @@ public class AuthController {
         Object token = session.getAttribute("token");
         
         if(token == null ){
-            return "redirect:/login";
+            //return "redirect:/login";
         }
         return "index";   
     }
@@ -116,7 +116,7 @@ public class AuthController {
             "errosServidor",
                     mensagemErroDoBackend
             ); 
-        //return "redirect:/registrar";
+        
         return "redirect:/registrar";
         
         }catch(Exception e){
@@ -134,14 +134,14 @@ public class AuthController {
           
     */
     
-
-
-    
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
+        
         return "redirect:/login";
     }
+
+    
     
 
 }
