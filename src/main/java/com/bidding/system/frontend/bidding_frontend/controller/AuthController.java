@@ -116,6 +116,7 @@ public class AuthController {
             "errosServidor",
                     mensagemErroDoBackend
             ); 
+        //return "redirect:/registrar";
         return "redirect:/registrar";
         
         }catch(Exception e){

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/editais")
 public class EditalController {
     
-    //regras de negocio devem ser aplicadas = logo teste
+    //regras de negocio devem ser aplicadas =  teste
     @GetMapping("/list")
     public String listar(
             HttpSession session
